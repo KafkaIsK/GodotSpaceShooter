@@ -11,7 +11,12 @@ config_version=4
 [application]
 
 config/name="SpaceShooter"
+run/main_scene="res://Scenes/Node2D.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+global="*res://global.gd"
 
 [display]
 

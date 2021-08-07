@@ -4,6 +4,9 @@ var speed = 50
 var shoot_offset = 20
 var bullet = preload("res://Scenes/Bullet.tscn")
 
+func _ready():
+	global.player = self
+
 func _physics_process(delta):
 	var dir = (get_global_mouse_position() - position).normalized()
 	rotation = dir.angle()

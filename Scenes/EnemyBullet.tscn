@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Art/laser-bolts.png" type="Texture" id=1]
-[ext_resource path="res://Scenes/Bullet.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/EnemyBullet.gd" type="Script" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 2.36268
@@ -17,15 +17,15 @@ rotation = 1.5708
 texture = ExtResource( 1 )
 hframes = 2
 vframes = 2
-frame = 2
+frame = 1
 
 [node name="coll" type="CollisionShape2D" parent="."]
-position = Vector2( 3.71816, 0.491077 )
+position = Vector2( -1.5083, -1.50831 )
 shape = SubResource( 1 )
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.7
+wait_time = 2.0
 autostart = true
 
-[connection signal="body_entered" from="." to="." method="_on_Bullet_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_Bullet_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

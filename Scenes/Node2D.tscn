@@ -1,14 +1,21 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Art/ship.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Player.gd" type="Script" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/Enemy.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 7.13661
 
+[sub_resource type="CircleShape2D" id=2]
+radius = 27.0207
+
 [node name="Node2D" type="Node2D"]
 
-[node name="Player" type="KinematicBody2D" parent="."]
+[node name="Player" type="KinematicBody2D" parent="." groups=[
+"player",
+]]
 position = Vector2( 283.391, 223.098 )
 script = ExtResource( 2 )
 __meta__ = {
@@ -30,9 +37,16 @@ zoom = Vector2( 0.7, 0.7 )
 position = Vector2( 2.73291, 1.52588e-05 )
 shape = SubResource( 1 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-visible = false
+[node name="simple" type="StaticBody2D" parent="." groups=[
+"obstacle",
+]]
 
-[node name="Sprite" type="Sprite" parent="StaticBody2D"]
+[node name="Sprite" type="Sprite" parent="simple"]
+position = Vector2( 291.657, 123.648 )
+texture = ExtResource( 3 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="simple"]
+position = Vector2( 292.113, 123.693 )
+shape = SubResource( 2 )
+
+[node name="Enemy" parent="." instance=ExtResource( 4 )]
